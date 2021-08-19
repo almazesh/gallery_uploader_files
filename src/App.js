@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import Routes from "./Pages/Routes/Routes"
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { fire } from "./Service/firebase";
+import Loader from "./Components/Loader/Loader";
+import './App.scss'
+import { useEffect } from "react";
+import { getFiles } from './API/index';
+const App = () =>{
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [user , loading] = useAuthState(fire.auth())
+
+    
+
+    if(loading){
+        return(
+            <div className='centerLoader'>
+                <Loader />
+            </div>
+        )
+    }else{
+        return (
+            <>
+                <Routes  user={user} />
+            </>
+        )
+    }
+
+
+    
 }
 
-export default App;
+export default App

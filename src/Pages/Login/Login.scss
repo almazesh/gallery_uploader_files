@@ -1,0 +1,20 @@
+.root{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .card{
+        text-align: center;
+        width: 400px;
+        background-color: rgba(0,0,0,0.9);
+        padding: 20px;
+        border-radius: 6px;
+        color: white;
+        box-shadow: 5px 5px 10px black;
+        img{
+            width: 150px;
+            cursor: pointer;
+        }
+    }
+}
